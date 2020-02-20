@@ -1,13 +1,15 @@
 import React from 'react';
 
 const Product = (props) => {
-const {name, price, imgUrl} = props.products
+const {name, price, imageurl, id} = props.product
     return(
         <div>
             Products 
-            {name}
-            {price}
-            {imgUrl}
+            <h4>Image Url: <img alt='product' src={imageurl}/></h4> 
+            <h4>Product Name: {name}</h4> 
+            <h4>Price: {price}</h4>
+            <button onClick={()=>props.deleteProduct(id)}>Delete</button>
+            <button>Edit</button>
         </div>
     )
 }

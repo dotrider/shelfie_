@@ -2,7 +2,7 @@ CREATE TABLE inventory (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50),
     price MONEY,
-    imageUrl TEXT
+    imageurl TEXT
 );
 
 SELECT * FROM inventory;

@@ -5,7 +5,7 @@ import Dashboard from './Component/Dashboard/Dashboard';
 import Form from './Component/Form/Form';
 import './App.css';
 
-//STEP 5
+
 
 export default class App extends Component{
     constructor(){
@@ -24,12 +24,31 @@ export default class App extends Component{
       })
     }
 
+    postProduct = (product) => {
+      axios.post(`/api/inventory`, product).then( res => {
+        this.setState({
+          inventory: res.data
+        })
+      })
+    }
+
+    deleteProduct = (id) => {
+      console.log('deleteProduct',this.deleteProduct)
+      axios.delete(`/api/inventory/${id}`).then(res => {
+        this.setState({
+          inventory: res.data
+        })
+      })
+    }
+
+
     render(){
+      console.log(this.state.inventory)
         return(
             <div>
               <Header />
-              <Dashboard inventory={this.state.inventory}/>
-              <Form />
+              <Dashboard inventory={this.state.inventory} deleteProduct={this.deleteProduct}/>
+              <Form postProduct={this.postProduct}/>
             </div>
         )
     }

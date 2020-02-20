@@ -3,8 +3,8 @@ import Product from '../Product/Product';
 
 const Dashboard = (props) => {
 
-const mappedData = props.inventory.map(products => {
-    return <Product products={products}/>
+const mappedData = props.inventory.map(product => {
+    return <Product key={product.id} product={product} deleteProduct={props.deleteProduct}/>
 })
     return(
         <div>
