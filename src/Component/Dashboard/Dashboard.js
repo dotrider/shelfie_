@@ -4,7 +4,7 @@ import Product from '../Product/Product';
 const Dashboard = (props) => {
 
 const mappedData = props.inventory.map(product => {
-    return <Product key={product.id} product={product} deleteProduct={props.deleteProduct}/>
+    return <Product key={product.id} product={product} deleteProduct={props.deleteProduct} editProduct={props.editProduct}/>
 })
     return(
         <div>

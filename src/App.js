@@ -42,8 +42,8 @@ export default class App extends Component{
       })
     }
 
-    editProduct = (id) => {
-      axios.put(`/api/inventory/${id}`).then(res => {
+    editProduct = (id, updatedProduct) => {
+      axios.put(`/api/inventory/${id}`, updatedProduct).then(res => {
         console.log('editProduct', res.data)
         this.setState({
           inventory: res.data
@@ -67,8 +67,8 @@ export default class App extends Component{
         return(
             <div>
               <Header />
-              <Dashboard inventory={this.state.inventory} deleteProduct={this.deleteProduct}/>
-              <Form postProduct={this.postProduct}/>
+              <Dashboard inventory={this.state.inventory} deleteProduct={this.deleteProduct} editProduct={this.editProduct}/>
+              <Form postProduct={this.postProduct} editProduct={this.editProduct}/>
             </div>
         )
     }

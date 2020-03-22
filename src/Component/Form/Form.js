@@ -46,6 +46,18 @@ export default class Form extends Component{
 
     }
 
+    updateProduct = () => {
+        const {name, price, imageurl} = this.state;
+
+        let updatedProduct = {
+            name,
+            price,
+            imageurl
+        }
+    this.props.editProduct(updatedProduct)    
+
+    }   
+
 
     render(){
         const{name, price, imageurl} = this.state
