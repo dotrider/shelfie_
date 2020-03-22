@@ -45,8 +45,8 @@ export default class Form extends Component{
         })
 
     }
-
-    updateProduct = () => {
+//Working on this fuction
+    updateProduct = (id) => {
         const {name, price, imageurl} = this.state;
 
         let updatedProduct = {
@@ -54,7 +54,7 @@ export default class Form extends Component{
             price,
             imageurl
         }
-    this.props.editProduct(updatedProduct)    
+    this.props.editProduct(id ,updatedProduct)    
 
     }   
 
