@@ -16,12 +16,22 @@ export default class App extends Component{
     }
 
       componentDidMount(){
+      this.getInventory()
+    }
+
+    getInventory = () => {
       axios.get(`/api/inventory`).then( res => {
-        console.log(res.data)
+        console.log('getProducts',res.data)
         this.setState({
           inventory: res.data
         })
       })
+    }
+
+    componentDidUpdate(prevProps, prevState){
+      if(prevState.inventory !== this.state.inventory){
+        this.getInventory()
+      }
     }
 
     postProduct = (product) => {
@@ -31,6 +41,16 @@ export default class App extends Component{
         })
       })
     }
+
+    editProduct = (id) => {
+      axios.put(`/api/inventory/${id}`).then(res => {
+        console.log('editProduct', res.data)
+        this.setState({
+          inventory: res.data
+        })
+      })
+    }
+
 
     deleteProduct = (id) => {
       console.log('deleteProduct',this.deleteProduct)
@@ -43,7 +63,7 @@ export default class App extends Component{
 
 
     render(){
-      console.log(this.state.inventory)
+      // console.log(this.state.inventory)
         return(
             <div>
               <Header />
